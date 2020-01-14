@@ -1,0 +1,1 @@
+- Useless use of cat information: <https://stackoverflow.com/questions/11710552/useless-use-of-cat>
