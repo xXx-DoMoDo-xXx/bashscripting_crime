@@ -1,9 +1,9 @@
 #!/bin/bash
 #
 # crime.sh
-# crime menu script
+# crime, without menu script
 #
-# 11.01.2020 / Dominic Wuethrich, Simon Tschudi, (Beat Maier)
+# 11.01.2020 / Dominic Wuethrich, Simon Tschudi
 #
 
 # Task 8.1: Funktion: Dateistruktur Analyse
