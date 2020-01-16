@@ -36,22 +36,25 @@ while true; do
   case $ANTWORT in
   1) # wenn die Antort 1 ist tue dies
     echo -e "\n=> ${MENU[1]}\n"
-    printf Hallo awk -F',' 'NR==1{print NF}' crime.csv
-    echo ""
+    # Textausgabe und Anzahl Zeilen ausgeben
+    echo "Anzahl Zeilen: $(wc -l < crime.csv)"
+    # Textausgabe und alle Spaltenbezeichnungen auflisten
+    echo "Spaltenbezeichnungen: $(awk 'NR==1{print; exit}' crime.csv)" # ToDo untereinandere auflisten anstatt nebenander!
+    echo""
     ;;
   2) # dasselbe fuer die Antwort 2
     echo -e "\n=> ${MENU[2]}\n"
     ./addscript.sh einNeuesSkrip.sh 
     ;;
-  3) # dasselbe fuer die Antwort 2
+  3) # dasselbe fuer die Antwort 3
     echo -e "\n=> ${MENU[3]}\n"
     ./addscript.sh einNeuesSkrip.sh 
     ;;
-  4) # dasselbe fuer die Antwort 2
+  4) # dasselbe fuer die Antwort 4
     echo -e "\n=> ${MENU[4]}\n"
     ./addscript.sh einNeuesSkrip.sh 
     ;;
-  5|[eE]|[qQ]) # regulaerer Ausdruck, behandelt sowohl 2 als auch e/E oder q/Q
+  5|[eE]|[qQ]) # regulaerer Ausdruck, behandelt sowohl 5 als auch e/E oder q/Q
     echo -e "\n=> ${MENU[5]}\n"
     break # while Schleife beenden
     ;;
