@@ -34,28 +34,30 @@ while true; do
   read ANTWORT
   # case Anweisung - je nach Eingabe Verhalten bestimmen
   case $ANTWORT in
-  1) # wenn die Antort 1 ist tue dies
-    echo -e "\n=> ${MENU[1]}\n"
+  0) # wenn die Antort 1 ist tue dies
+    echo -e "\n=> ${MENU[0]}\n"
     # Textausgabe und Anzahl Zeilen ausgeben
     echo "Anzahl Zeilen: $(wc -l < crime.csv)"
     # Textausgabe und alle Spaltenbezeichnungen auflisten
     echo "Spaltenbezeichnungen: $(awk 'NR==1{print; exit}' crime.csv)" # ToDo untereinandere auflisten anstatt nebenander!
     echo""
     ;;
-  2) # dasselbe fuer die Antwort 2
-    echo -e "\n=> ${MENU[2]}\n"
-    ./addscript.sh einNeuesSkrip.sh 
+  1) # dasselbe fuer die Antwort 2
+    echo -e "\n=> ${MENU[1]}\n"
+    # Ausgabe Verbrechen und die jeweiligen Häufigkeit (Total)
+    awk -F, '{print $1, $NF;}' crime.csv
+    echo
     ;;
-  3) # dasselbe fuer die Antwort 3
+  2) # dasselbe fuer die Antwort 3
+    echo -e "\n=> ${MENU[2]}\n"
+    awk -F, 'BEGIN {print $1,"\t",$2,"\t",$3,"\t",$NF;} END{print "END REPORT\n--------------"; }' crime.csv
+    ;;
+  3) # dasselbe fuer die Antwort 4
     echo -e "\n=> ${MENU[3]}\n"
     ./addscript.sh einNeuesSkrip.sh 
     ;;
-  4) # dasselbe fuer die Antwort 4
+  4|[eE]|[qQ]) # regulaerer Ausdruck, behandelt sowohl 5 als auch e/E oder q/Q
     echo -e "\n=> ${MENU[4]}\n"
-    ./addscript.sh einNeuesSkrip.sh 
-    ;;
-  5|[eE]|[qQ]) # regulaerer Ausdruck, behandelt sowohl 5 als auch e/E oder q/Q
-    echo -e "\n=> ${MENU[5]}\n"
     break # while Schleife beenden
     ;;
   *) # bei allen anderen Antworten kommt dieser Block zum Zug
