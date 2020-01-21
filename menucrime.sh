@@ -10,10 +10,10 @@ TITLE="**** Crime Statistic Menu ****"
 
 # Der Array fuer das Menu
 MENU=(
-"Dateistruktur Analyse"
-"Daten Analyse"
-"Häufigstes Verbrechen pro Stadt"
-"Beste Stadt in Australien"
+"Data structur analysis"
+"Data analysis"
+"Most crime in this city"
+"Best city in Australia"
 "Exit"
 )
 
@@ -51,7 +51,7 @@ while true; do
   2) # dasselbe fuer die Antwort 3
     echo -e "\n=> ${MENU[2]}\n"
       for i in {3..10}; do
-        echo "Haeufigste Verbrechen in $(awk -F, "{print \$$i}" crime.csv | head -1): $(sort -k$i -t, -r -n crime.csv | head -1 | awk -F, "{print \$1, \$$i}")"
+        echo "Most crimes in $(awk -F, "{print \$$i}" crime.csv | head -1): $(sort -k$i -t, -r -n crime.csv | head -1 | awk -F, "{print \$1, \$$i}")"
       done
     echo""
     ;;
