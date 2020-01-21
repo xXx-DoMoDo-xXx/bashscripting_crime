@@ -50,7 +50,10 @@ while true; do
     ;;
   2) # dasselbe fuer die Antwort 3
     echo -e "\n=> ${MENU[2]}\n"
-    awk -F, 'BEGIN {print $1,"\t",$2,"\t",$3,"\t",$NF;} END{print "END REPORT\n--------------"; }' crime.csv
+      for i in {3..10}; do
+        echo "Haeufigste Verbrechen in $(awk -F, "{print \$$i}" crime.csv | head -1): $(sort -k$i -t, -r -n crime.csv | head -1 | awk -F, "{print \$1, \$$i}")"
+      done
+    echo""
     ;;
   3) # dasselbe fuer die Antwort 4
     echo -e "\n=> ${MENU[3]}\n"
@@ -65,3 +68,5 @@ while true; do
     ;;
   esac
 done
+
+
