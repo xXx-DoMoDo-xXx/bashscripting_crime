@@ -50,6 +50,7 @@ while true; do
     ;;
   2) # dasselbe fuer die Antwort 3
     echo -e "\n=> ${MENU[2]}\n"
+    
       for i in {3..10}; do
         echo "Most crimes in $(awk -F, "{print \$$i}" crime.csv | head -1): $(sort -k$i -t, -r -n crime.csv | head -1 | awk -F, "{print \$1, \$$i}")"
       done
