@@ -55,9 +55,12 @@ while true; do
       done
     echo""
     ;;
-  3) # dasselbe fuer die Antwort 4
+  3) # dasselbe fuer die Antwort 4 (ist noch falsch berechnet !!!)
     echo -e "\n=> ${MENU[3]}\n"
-    ./addscript.sh einNeuesSkrip.sh 
+      for i in {2..10}; do
+        awk -F, "{ SUM += \$$i } END { print SUM }" crime.csv
+      done
+    echo""
     ;;
   4|[eE]|[qQ]) # regulaerer Ausdruck, behandelt sowohl 5 als auch e/E oder q/Q
     echo -e "\n=> ${MENU[4]}\n"
