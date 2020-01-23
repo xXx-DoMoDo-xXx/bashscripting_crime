@@ -3,7 +3,7 @@
 # menucrime.sh
 # crime, menu script
 #
-# 16.01.2020 / Dominic Wuethrich, Simon Tschudi
+# 23.01.2020 / Dominic Wuethrich, Simon Tschudi
 #
 # Variablen
 TITLE="**** Crime Statistic Menu ****"
@@ -13,7 +13,7 @@ MENU=(
 "Data structur analysis"
 "Data analysis"
 "Most crime in this city"
-"Best city in Australia"
+"Most crime in this city (faster solution)"
 "Exit"
 )
 
@@ -50,17 +50,16 @@ while true; do
     ;;
   2) # dasselbe fuer die Antwort 3
     echo -e "\n=> ${MENU[2]}\n"
-    
+    # Ausgabe Meiste Verbrechen in den jeweiligen Städten
       for i in {3..10}; do
         echo "Most crimes in $(awk -F, "{print \$$i}" crime.csv | head -1): $(sort -k$i -t, -r -n crime.csv | head -1 | awk -F, "{print \$1, \$$i}")"
       done
     echo""
     ;;
-  3) # dasselbe fuer die Antwort 4 (ist noch falsch berechnet !!!)
+  3) # dasselbe fuer die Antwort 3
     echo -e "\n=> ${MENU[3]}\n"
-      for i in {2..10}; do
-        awk -F, "{ SUM += \$$i } END { print SUM }" crime.csv
-      done
+    # Ausgabe Meiste Verbrechen in den jeweiligen Städten (führt schneller aus, Lösung erhalten von einem Arbeitskolleg)
+      ./cr2.awk < crime.csv
     echo""
     ;;
   4|[eE]|[qQ]) # regulaerer Ausdruck, behandelt sowohl 5 als auch e/E oder q/Q
